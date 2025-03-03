@@ -1,0 +1,12 @@
+1. SQL Generation:
+    Implemented: For now training large model with 1051 context window size.
+    Needs to try:
+    a. Remove the data types, will shorten in the size by a lot. Remember in the main dataset also you have to do the same.
+    b. Any filtering logic based on the required columns with smaller T5 model, think it through.
+    c. Can I add my column and table names into tokenizer,
+        Pros: Smaller model size can also work
+        Cons: How do you handle embeddings of those words, may need a lot of fine tune data. Also not sure if the same embeddings can be used for this or not.
+    d. Use below approach:
+       Train the same model which can do two tasks based on the prompt given.
+       Eg: prompt1: Given the question {question}, what all tables and columns can be used to answer the query.
+           prompt2: Given question {question}, tables, columns {create table statement with relevant tables and columns}, generate the answer.
